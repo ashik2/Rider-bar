@@ -1,20 +1,42 @@
+# Gradle and build outputs
+.gradle/
+build/
+app/build/
+.build-outputs/
+*.apk
+*.aar
+*.aab
+
+# Kotlin
+.kotlin/
+
+# Android Studio / IntelliJ IDEA
 *.iml
-.gradle
-.kotlin
-/local.properties
+.idea/
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+
+# System / OS files
 .DS_Store
-/build
+Thumbs.db
+
+# Private / local configuration files
+local.properties
+.env
+.env.local
+.env.*.local
+
+# Keystores / Signing
+*.jks
+*.keystore
+!debug.keystore.base64
+
+# Captures and logs
 /captures
 .externalNativeBuild
 .cxx
-local.properties
-.env
-debug.keystore
-.build-outputs/
-
+*.log
