@@ -21,6 +21,14 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Validate Gradle wrapper
+        run: |
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ] || [ ! -s gradle/wrapper/gradle-wrapper.jar ]; then
+            echo "gradle-wrapper.jar is missing or empty. Downloading..."
+            mkdir -p gradle/wrapper
+            curl -L -o gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/releases/download/v9.3.1/gradle-9.3.1-all.zip
+          fi
+
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
