@@ -20,21 +20,18 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          cache: gradle
 
-      - name: Clean gradle wrapper
+      - name: Download Gradle wrapper JAR
         run: |
-          rm -rf gradle/wrapper/gradle-wrapper.jar
-          rm -rf .gradle/
-
-      - name: Grant execute permission to gradlew
-        run: chmod +x gradlew
-
-      - name: Regenerate gradle wrapper
-        run: ./gradlew wrapper
+          mkdir -p gradle/wrapper
+          cd gradle/wrapper
+          curl -L -o gradle-wrapper.jar https://github.com/gradle/gradle/releases/download/v9.3.1/gradle-9.3.1-bin.zip
+          unzip -q gradle-9.3.1-bin.zip
+          cd ../../
+          chmod +x gradlew
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug --no-daemon
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
