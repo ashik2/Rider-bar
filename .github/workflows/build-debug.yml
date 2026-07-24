@@ -22,8 +22,16 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      - name: Clean gradle wrapper
+        run: |
+          rm -rf gradle/wrapper/gradle-wrapper.jar
+          rm -rf .gradle/
+
       - name: Grant execute permission to gradlew
         run: chmod +x gradlew
+
+      - name: Regenerate gradle wrapper
+        run: ./gradlew wrapper
 
       - name: Build debug APK
         run: ./gradlew assembleDebug
