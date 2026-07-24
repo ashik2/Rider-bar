@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Rider Bar</string>
+    <string name="accessibility_service_name">Rider Bar Service</string>
+    <string name="accessibility_service_description">Enables the Rider Bar on-screen navigation bar overlay to control Home, Back, and Recents, and quickly switch between your favorite delivery and navigation apps.</string>
+</resources>

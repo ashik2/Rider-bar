@@ -1,0 +1,6 @@
+{
+  "name": "Rider Bar",
+  "description": "A persistent accessibility bottom navigation bar with customizable quick-launch app shortcuts for delivery riders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
