@@ -21,12 +21,17 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Validate Gradle wrapper
+      - name: Fix corrupted gradle-wrapper.jar
         run: |
           if [ ! -f gradle/wrapper/gradle-wrapper.jar ] || [ ! -s gradle/wrapper/gradle-wrapper.jar ]; then
-            echo "gradle-wrapper.jar is missing or empty. Downloading..."
-            mkdir -p gradle/wrapper
-            curl -L -o gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/releases/download/v9.3.1/gradle-9.3.1-all.zip
+            echo "gradle-wrapper.jar is missing or corrupted. Removing and letting Gradle rebuild..."
+            rm -f gradle/wrapper/gradle-wrapper.jar
+          else
+            # Check if it's a valid JAR file
+            if ! file gradle/wrapper/gradle-wrapper.jar | grep -q "Java archive"; then
+              echo "gradle-wrapper.jar is invalid. Removing..."
+              rm -f gradle/wrapper/gradle-wrapper.jar
+            fi
           fi
 
       - name: Setup Gradle
