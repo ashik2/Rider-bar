@@ -52,18 +52,16 @@ android {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
   }
-}
 
-kotlin {
-  jvmToolchain(21)
-}
-
-android {
   buildFeatures {
     compose = true
     buildConfig = true
   }
   testOptions { unitTests { isIncludeAndroidResources = true } }
+}
+
+kotlin {
+  jvmToolchain(21)
 }
 
 // Configure the Secrets Gradle Plugin to use .env and .env.example files
